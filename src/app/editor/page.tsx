@@ -33,6 +33,10 @@ export default function Editor() {
 
       await PSPDFKit.load({
         customFonts,
+        toolbarItems: [
+          ...PSPDFKit.defaultToolbarItems,
+          { type: "content-editor" },
+        ],
         container,
         document: file,
         baseUrl: `${window.location.protocol}//${window.location.host}/`,
