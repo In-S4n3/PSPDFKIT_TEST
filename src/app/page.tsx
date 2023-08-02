@@ -22,6 +22,7 @@ export default function Home() {
         onChange={(e) => {
           handleChange(e);
         }}
+        className="border-white border-2 p-3 rounded text-cyan-300"
       />
     </main>
   );
