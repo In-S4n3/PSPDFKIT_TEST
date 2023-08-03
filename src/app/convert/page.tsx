@@ -12,15 +12,18 @@ const Convert = () => {
   const pdfToWordApi = async (file: any) => {
     const formData = new FormData();
     formData.append("file", file);
+    const api_endpoint = process.env.NEXT_PUBLIC_API;
 
-    const { data } = await axios.post(`${process.env.API}`, formData);
+    try {
+      const { data } = await axios.post(`${api_endpoint}`, formData);
 
-    if (data.success) {
-      setDownloadLink(
-        `${process.env.API}/download?file=${encodeURIComponent(
-          data.outputFile
-        )}`
-      );
+      if (data.success) {
+        setDownloadLink(
+          `${api_endpoint}/download?file=${encodeURIComponent(data.outputFile)}`
+        );
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
