@@ -4,7 +4,7 @@ import { useFileContext } from "../context/FileContext";
 
 export default function Editor() {
   const containerRef = useRef(null);
-  const { file } = useFileContext();
+  const { buffer } = useFileContext();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -38,13 +38,13 @@ export default function Editor() {
           { type: "content-editor" },
         ],
         container,
-        document: file,
+        document: buffer,
         baseUrl: `${window.location.protocol}//${window.location.host}/`,
       });
     })();
 
     return () => PSPDFKit && PSPDFKit.unload(container);
-  }, [file]);
+  }, [buffer]);
 
   return <div ref={containerRef} style={{ height: "100vh" }} />;
 }

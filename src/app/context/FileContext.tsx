@@ -10,11 +10,15 @@ import {
 interface EditorContextTypes {
   file: undefined;
   setFile: Dispatch<SetStateAction<undefined>>;
+  buffer: undefined;
+  setBuffer: Dispatch<SetStateAction<undefined>>;
 }
 
 const FileContext = createContext<EditorContextTypes>({
   file: undefined,
   setFile: () => undefined,
+  buffer: undefined,
+  setBuffer: () => undefined,
 });
 
 export const FileContextProvider = ({
@@ -23,9 +27,10 @@ export const FileContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [file, setFile] = useState(undefined);
+  const [buffer, setBuffer] = useState(undefined);
 
   return (
-    <FileContext.Provider value={{ file, setFile }}>
+    <FileContext.Provider value={{ file, setFile, buffer, setBuffer }}>
       {children}
     </FileContext.Provider>
   );
