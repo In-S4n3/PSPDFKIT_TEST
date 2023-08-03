@@ -44,7 +44,7 @@ export default function Editor() {
     })();
 
     return () => PSPDFKit && PSPDFKit.unload(container);
-  }, []);
+  }, [file]);
 
   return <div ref={containerRef} style={{ height: "100vh" }} />;
 }
